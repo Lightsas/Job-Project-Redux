@@ -23,7 +23,7 @@ function SingleLaunchesPage() {
                 upcoming: coming,
                 launch_year: year,
                 details: details,
-                launch_date_local: local_date,
+                launch_date_local: date,
             } = launches [0];
             const newLaunches = {
                 id,
@@ -31,7 +31,7 @@ function SingleLaunchesPage() {
                 coming,
                 year,
                 details,
-                local_date,
+                date,
             };
             setModifiedLaunches(newLaunches);
         }else {
@@ -42,7 +42,7 @@ function SingleLaunchesPage() {
     if(!modifiedLaunches) {
         return <h2>No Launches to Display</h2>
     } else {
-        const {name, coming, year, details, loacl_date} = modifiedLaunches;
+        const {name, coming, year, details, date} = modifiedLaunches;
         return (
             <>
             {loading ? (
@@ -52,9 +52,9 @@ function SingleLaunchesPage() {
                     <Link to="/"> <Button variant="danger">Go Back</Button></Link>
                     <h2>Details Information</h2>
                     <Card border="primary" style={{ width: '50rem',}}>
-                        <Card.Header>{loacl_date}</Card.Header>
+                        <Card.Header>{name}</Card.Header>
                         <Card.Body>
-                        <Card.Title>{name}</Card.Title>
+                        <Card.Title>{date}</Card.Title>
                         <Card.Text> {details}
                         </Card.Text>
                         </Card.Body>

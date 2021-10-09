@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Row } from 'react-bootstrap';
 import {useDispatch, useSelector} from "react-redux";
 import { Link } from 'react-router-dom';
 import { fetchLaunches } from "../../Redux/action"
@@ -44,7 +44,7 @@ function Launcheslist() {
     }
 
     return (
-        <div>
+        <Row>
             {modifiedLaunches.map((item) => {
                 const {id, name, coming, year} = item;
                 return (
@@ -55,8 +55,7 @@ function Launcheslist() {
                                 <Card.Title>{name}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{coming}</Card.Subtitle>
                                 <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
+                                {year}
                                 </Card.Text>
                                 <Link to={`/launches/${id}`}>
                                     <Button variant="info">Details Info</Button>
@@ -67,7 +66,7 @@ function Launcheslist() {
                 )
             })}
             
-        </div>
+        </Row>
     );
 }
 

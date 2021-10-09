@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import {fetchSearchLaunches} from "../../Redux/action";
 import {useDispatch} from "react-redux";
+import { Form } from 'react-bootstrap';
 
 function Search() {
 
@@ -17,13 +18,9 @@ function Search() {
 
     return (
         <div>
-            {/* <InputGroup size="sm">
-                <InputGroup.Text id="inputGroup-sizing-lg">Large</InputGroup.Text>
-                <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
-            </InputGroup> */}
-            <form onSubmit={handleSubmit}>
-                <input type="text" ref={searchValue} name="name" id="name" onChange={searchLaunches}></input>
-            </form>
+            <Form onSubmit={handleSubmit}>
+                <input type="text" placeholder="Search" ref={searchValue} name="name" id="name" onChange={searchLaunches}></input>
+            </Form>
         </div>
     );
 }
