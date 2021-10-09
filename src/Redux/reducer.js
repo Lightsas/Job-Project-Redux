@@ -27,6 +27,26 @@ const launchesReducer = (state = initialState, action) => {
                 error: action.payload,
             }; 
 
+
+            case types.SEARCH_LAUNCHES_START:
+                return {
+                    ...state,
+                    loading: true,
+                };
+            case types.SEARCH_LAUNCHES_SUCCESS:
+                return {
+                    ...state,
+                    loading: false,
+                    launches: action.payload
+                };
+            case types.SEARCH_LAUNCHES_FAIL:
+                return {
+                    ...state,
+                    loading: false,
+                    error: action.payload,
+                };
+
+
             case types.GET_SINGLE_LAUNCHES_START:
                 return {
                     ...state,

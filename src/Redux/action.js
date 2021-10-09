@@ -30,6 +30,33 @@ const fetchSingleLaunchesFail = (error) => ({
     payload: error,
 });
 
+
+const fetchSearchLaunchesStart = () => ({
+    type: types.SEARCH_LAUNCHES_START
+});
+
+const fetchSearchLaunchesSuccess = (launches) => ({
+    type: types.SEARCH_LAUNCHES_SUCCESS,
+    payload: launches
+});
+
+const fetchSearchLaunchesFail = (error) => ({
+    type: types.SEARCH_LAUNCHES_FAIL,
+    payload: error,
+});
+
+export function fetchSearchLaunches(searchText) {
+    return function (dispatch) {
+        dispatch(fetchSearchLaunchesStart());
+        axios.get(`https://api.spacexdata.com/v3/launches${searchText}`).then((response) => {
+            const launches = response.data;
+            dispatch(fetchSearchLaunchesSuccess(launches))
+        }).catch((error) => {
+            dispatch(fetchSearchLaunchesFail(error))
+        })
+    }
+}
+
 export function fetchLaunches() {
     return function (dispatch) {
         dispatch(fetchLaunchesStart());
