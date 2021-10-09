@@ -41,3 +41,16 @@ export function fetchLaunches() {
         })
     }
 }
+
+
+export function fetchSingleLaunches(id) {
+    return function (dispatch) {
+        dispatch(fetchSingleLaunchesStart());
+        axios.get(`https://api.spacexdata.com/v3/launches${id}`).then((response) => {
+            const launche = response.data;
+            dispatch(fetchSingleLaunchesSuccess(launche))
+        }).catch((error) => {
+            dispatch(fetchSingleLaunchesFail(error))
+        })
+    }
+}

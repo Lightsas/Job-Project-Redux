@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import {useDispatch, useSelector} from "react-redux";
+import { Link } from 'react-router-dom';
 import { fetchLaunches } from "../../Redux/action"
 
 function Launcheslist() {
@@ -57,8 +58,9 @@ function Launcheslist() {
                                 Some quick example text to build on the card title and make up the bulk of
                                 the card's content.
                                 </Card.Text>
-                                <Card.Link href="#">Card Link</Card.Link>
-                                <Card.Link href="#">Another Link</Card.Link>
+                                <Link to={`/launches/${id}`}>
+                                    <Button variant="info">Details Info</Button>
+                                </Link>
                             </Card.Body>
                         </Card>
                     </div>
